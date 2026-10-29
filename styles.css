@@ -560,3 +560,15 @@ main[data-view=home] .hints .pop-l{font-size:13px}
 /* chips-wrap-fix: на компьютере (мышь) ряды фильтров переносятся, а не прокручиваются вбок */
 @media (min-width:700px){.chips{flex-wrap:wrap;overflow-x:visible;margin:0;padding-left:0}}
 @media (hover:hover) and (pointer:fine){.lstrip,.gallery{scrollbar-width:thin}.lstrip::-webkit-scrollbar,.gallery::-webkit-scrollbar{height:8px}.lstrip::-webkit-scrollbar-thumb,.gallery::-webkit-scrollbar-thumb{background:rgba(0,0,0,.25);border-radius:4px}}
+
+/* langseg: компактный переключатель KZ | RU в шапке */
+.top .brand{min-width:0;flex:1 1 auto}
+.langseg{flex:none;display:inline-flex;margin-left:10px;background:rgba(255,255,255,.18);border:1px solid rgba(255,255,255,.55);border-radius:999px;padding:3px;gap:2px}
+.langseg button{border:0;background:transparent;color:#fff;font:inherit;font-size:14px;font-weight:700;letter-spacing:.5px;min-width:42px;min-height:34px;padding:0 10px;border-radius:999px;cursor:pointer}
+.langseg button.on{background:#fff;color:#0f5a2b}
+.langseg button:focus-visible{outline:2px solid #fff;outline-offset:2px}
+@media (max-width:400px){.langseg button{min-width:36px;padding:0 7px;font-size:13px}.top .brand small{display:none}}
+/* chips-wrap-fix2: при мыши (любая ширина окна) ряды фильтров тоже переносятся; длинные email/примечания в телефонах не вылезают */
+@media (hover:hover) and (pointer:fine){.chips{flex-wrap:wrap;overflow-x:visible;margin:0;padding-left:0}}
+.phr-b{min-width:0;overflow-wrap:anywhere}
+@media (max-width:420px){.phr-num{font-size:17px;letter-spacing:0}}
