@@ -572,3 +572,4 @@ main[data-view=home] .hints .pop-l{font-size:13px}
 @media (hover:hover) and (pointer:fine){.chips{flex-wrap:wrap;overflow-x:visible;margin:0;padding-left:0}}
 .phr-b{min-width:0;overflow-wrap:anywhere}
 @media (max-width:420px){.phr-num{font-size:17px;letter-spacing:0}}
+@media(max-width:299px){.phr-a{flex-direction:column}.phr-a .btn{flex:none}.phr-num{white-space:normal;overflow-wrap:anywhere}h1{overflow-wrap:anywhere}}
