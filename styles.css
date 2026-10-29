@@ -557,3 +557,6 @@ main[data-view=home] .hints .pop-l{font-size:13px}
 .city-about{display:grid;grid-template-columns:1fr;gap:12px;background:#fff;border:1px solid var(--line);border-radius:20px;overflow:hidden;margin:16px 0}.city-about .ca-img{width:100%;height:220px;object-fit:cover;display:block}.city-about>div{padding:0 16px 12px}.city-about h2{color:#0f5a2b;margin:4px 0}
 @media(min-width:700px){.city-about{grid-template-columns:1fr 1fr}.city-about>div{padding:16px}.city-hero .ch-img{height:300px}}
 .ig-btn{display:flex;align-items:center;justify-content:center;gap:8px;margin:6px 0 12px;padding:12px 16px;border-radius:14px;color:#fff;font-weight:700;text-decoration:none;background:linear-gradient(45deg,#f09433,#dc2743 50%,#bc1888)}
+/* chips-wrap-fix: на компьютере (мышь) ряды фильтров переносятся, а не прокручиваются вбок */
+@media (min-width:700px){.chips{flex-wrap:wrap;overflow-x:visible;margin:0;padding-left:0}}
+@media (hover:hover) and (pointer:fine){.lstrip,.gallery{scrollbar-width:thin}.lstrip::-webkit-scrollbar,.gallery::-webkit-scrollbar{height:8px}.lstrip::-webkit-scrollbar-thumb,.gallery::-webkit-scrollbar-thumb{background:rgba(0,0,0,.25);border-radius:4px}}

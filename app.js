@@ -738,3 +738,5 @@ const start=()=>{applyLang();route();loadBackend().then(()=>{if(LIVE)trackView()
 if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',start);else start();
 window.addEventListener('site-lang',()=>{const n=$('#netnote');if(n)n.textContent=t('offline')});
 })();
+// chips-wrap-fix: колесо мыши прокручивает горизонтальные ряды (лента объявлений, галерея, фильтры на узких окнах)
+document.addEventListener('wheel',e=>{if(e.ctrlKey||Math.abs(e.deltaX)>Math.abs(e.deltaY))return;const r=e.target.closest&&e.target.closest('.chips,.lstrip,.gallery');if(!r||r.scrollWidth<=r.clientWidth+1)return;const max=r.scrollWidth-r.clientWidth;if((e.deltaY<0&&r.scrollLeft<=0)||(e.deltaY>0&&r.scrollLeft>=max-1))return;r.scrollLeft+=e.deltaY;e.preventDefault()},{passive:false});
