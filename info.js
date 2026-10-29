@@ -1,4 +1,5 @@
 // izde.kz — «📞 Полезные телефоны / Пайдалы телефондар» (таблица phones, 21_growth.sql): экстренные службы, аварийные,
+const FREE_CHAT_I=((window.SITE_CONFIG||{}).contacts||{}).free_chat_url||(window.SITE_CONFIG||{}).free_chat_url||'';
 // ОСИ/КСК, участковый, акимат, ЦОН, поликлиника, школа, детсады. Список ведут админ и модератор в админке.
 // Подключается после app.js (использует window.SITE_APP).
 (function(){
@@ -47,7 +48,7 @@ function view(){
  const groups=GR.map(([g,e])=>[g,e,PH.filter(r=>r.grp===g)]).filter(x=>x[2].length);
  A.app.innerHTML=`<div class="crumbs"><button class="back" onclick="location.hash='#/'" aria-label="${t('back')}">←</button><h1>📞 ${esc(t('phTitle'))}</h1></div>
  <p class="ph-intro">${esc(t('phIntro'))}</p>${teamHtml()}
- <section class="phg"><h2>💬 ${A.lang()==='kz'?'Аудан чаттары':'Чаты района'}</h2><div class="phr otdam-r"><div><b>${A.lang()==='kz'?'«Тегін беремін» WhatsApp чаты':'Чат «Отдам даром» в WhatsApp'}</b><small>${A.lang()==='kz'?'Қажет емес заттарды тегін беру және алу':'Отдать или забрать ненужные вещи бесплатно'}</small></div><a class="btn wa sm" href="https://chat.whatsapp.com/BSOe0MEwoTJ75EB0HHgIPn" target="_blank" rel="noopener">${A.WA_SVG}<span>${A.lang()==='kz'?'Чатқа кіру':'Вступить'}</span></a></div></section>
+ ${FREE_CHAT_I?`<section class="phg"><h2>💬 ${A.lang()==='kz'?'Аудан чаттары':'Чаты района'}</h2><div class="phr otdam-r"><div><b>${A.lang()==='kz'?'«Тегін беремін» WhatsApp чаты':'Чат «Отдам даром» в WhatsApp'}</b><small>${A.lang()==='kz'?'Қажет емес заттарды тегін беру және алу':'Отдать или забрать ненужные вещи бесплатно'}</small></div><a class="btn wa sm" href="${FREE_CHAT_I}" target="_blank" rel="noopener">${A.WA_SVG}<span>${A.lang()==='kz'?'Чатқа кіру':'Вступить'}</span></a></div></section>`:''}
  ${groups.length?groups.map(([g,e,l])=>`<section class="phg"><h2>${e} ${esc(t('phGr')[g])}</h2>${l.map(row).join('')}${g==='activist'&&window.SITE_AP?SITE_AP.link():''}</section>`).join('')
    :`<div class="ann-empty">${SB.enabled&&!LOADED&&!A.isOffline()?`⏳ <b>${t('loading')}</b>`:`📞 <b>${esc(t('phEmpty'))}</b>`}</div>`}`;
 }
