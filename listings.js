@@ -7,16 +7,16 @@ const {esc,$,SB}=A; const t=k=>A.t(k);
 const ON=!!(((window.SITE_CONFIG||{}).features||{}).listings);
 if(ON){const nv=document.querySelector('nav.bottom');if(nv)nv.innerHTML=[['#/','home','🏠','navHome',''],['#/bazar','bazar','🛍','navBazar',''],['#/post','post','➕','navPost',' class="post"'],['#/news','news','📰','navNews',''],['#/menu','menu','☰','navMenu','']].map(([h,k,e,i,c])=>`<a href="${h}" data-nav="${k}"${c}><span>${e}</span><b data-i18n="${i}">${A.t(i)||''}</b></a>`).join('')}
 A.addDict({
- navBazar:'Барахолка',navPost:'Подать',navMenu:'Меню',waGreetL:'Здравствуйте! Нашёл ваше объявление «{t}» на сайте {u}',
- lSec:{market:'Барахолка',ads:'Объявления',jobs:'Работа',lost:'Потеряшки'},
- lSecD:{market:'Продам, куплю, отдам даром',ads:'Аренда, подработка, услуги, попутчики',jobs:'Вакансии и резюме соседей',lost:'Потерял или нашёл'},
- lKind:{sell:'Продам',buy:'Куплю',free:'Отдам даром',rent_offer:'Сдам',rent_seek:'Сниму',job_offer:'Вакансия',job_seek:'Ищу работу',gig:'Подработка',service:'Услуги частных лиц',ride:'Попутчики',other:'Разное',lost:'Потерял',found:'Нашёл'},
- lCat:{jobs:{other:''},market:{kids:'Детское',clothes:'Одежда',tech:'Техника',furniture:'Мебель',home:'Для дома и дачи',auto:'Авто и запчасти',animals:'Животные и скот',build:'Стройматериалы',other:'Прочее'},
+ navBazar:'Реклама',navPost:'Подать',navMenu:'Меню',waGreetL:'Здравствуйте! Нашёл ваше объявление «{t}» на сайте {u}',
+ lSec:{market:'Реклама',ads:'Услуги',jobs:'Работа',lost:'Бюро находок'},
+ lSecD:{market:'Продам/куплю, сдам/сниму, отдам даром',ads:'Ищу / предлагаю услуги',jobs:'Ищу сотрудника / ищу работу',lost:'Потерял / нашёл'},
+ lKind:{sell:'Продам',buy:'Куплю',free:'Отдам даром',rent_offer:'Сдам',rent_seek:'Сниму',job_offer:'Вакансия',job_seek:'Ищу работу',gig:'Подработка',service:'Предлагаю',ride:'Попутчики',other:'Ищу',lost:'Потерял',found:'Нашёл'},
+ lCat:{jobs:{other:''},market:{kids:'Детское',clothes:'Одежда',tech:'Техника',furniture:'Мебель',home:'Для дома и дачи',auto:'Авто и запчасти',animals:'Животные и скот',build:'Стройматериалы',other:'Прочее',house:'Дом',flat:'Квартира',room:'Комната',garage:'Гараж',equipment:'Техника (аренда)'},
   ads:{house:'Дом',flat:'Квартира',room:'Комната',garage:'Гараж',equipment:'Техника',other:'Другое'},
   lost:{animals:'Животные',docs:'Документы',keys:'Ключи',things:'Вещи',other:'Другое'}},
  lPrice:{free:'Даром',negotiable:'Договорная',none:''},lAll:'Все',lAllCats:'Все категории',
  lEmpty:'Пока объявлений нет',lEmptyS:'Подайте первое — это бесплатно. После проверки оно появится здесь.',lPostBtn:'➕ Подать объявление',
- lFresh:'Свежие объявления',jTab:{job_offer:'👷 Ищу работников',job_seek:'🙋 Ищу работу'},jPost:{job_offer:'➕ Подать вакансию',job_seek:'➕ Разместить резюме'},jTabD:{job_offer:'Вакансии от работодателей Мугалжарского района',job_seek:'Соседи, которые ищут работу'},jEmpty:{job_offer:'Вакансий пока нет',job_seek:'Резюме пока нет'},jWho:'Что вы хотите разместить?',jTitleO:'Кого ищете (должность)',jTitleOPh:'Например: охранник, продавец, повар',jTitleS:'Профессия / что умеете',jTitleSPh:'Например: водитель категории B, повар, няня',jName:'Ваше имя',jExp:'Опыт работы',jExpPh:'Например: 5 лет водителем в такси',jBodyO:'Условия: график, обязанности, требования',jBodyS:'О себе: график, пожелания',jPay:'Зарплата',jPayS:'Желаемая зарплата',jPayF:'Сумма, ₸',jPlaceO:'Где работа (адрес, район)',jPlaceS:'Где хотите работать',jNameL:'Имя',jExpL:'Опыт',lFreshAll:'Все объявления →',lFreshEmpty:'Пока объявлений нет — подайте первое',
+ lFresh:'Свежие объявления',jTab:{job_offer:'👷 Ищу сотрудника',job_seek:'🙋 Ищу работу'},jPost:{job_offer:'➕ Подать вакансию',job_seek:'➕ Разместить резюме'},jTabD:{job_offer:'Вакансии от работодателей Мугалжарского района',job_seek:'Соседи, которые ищут работу'},jEmpty:{job_offer:'Вакансий пока нет',job_seek:'Резюме пока нет'},jWho:'Что вы хотите разместить?',jTitleO:'Кого ищете (должность)',jTitleOPh:'Например: охранник, продавец, повар',jTitleS:'Профессия / что умеете',jTitleSPh:'Например: водитель категории B, повар, няня',jName:'Ваше имя',jExp:'Опыт работы',jExpPh:'Например: 5 лет водителем в такси',jBodyO:'Условия: график, обязанности, требования',jBodyS:'О себе: график, пожелания',jPay:'Зарплата',jPayS:'Желаемая зарплата',jPayF:'Сумма, ₸',jPlaceO:'Где работа (адрес, район)',jPlaceS:'Где хотите работать',jNameL:'Имя',jExpL:'Опыт',lFreshAll:'Все объявления →',lFreshEmpty:'Пока объявлений нет — подайте первое',
  lClosed:{market:'Продано',ads:'Неактуально',jobs:'Неактуально',lost:'Нашлось'},lViews:n=>`👁 ${n}`,lPosted:'Опубликовано',lWhere:'Где',lWhen:'Когда',lShare:'Поделиться в WhatsApp',
  lHighlight:'Выделено',lNotFound:'Объявление не найдено или снято',lExpires:'Активно до',
  pTitle:'Подать объявление',pChoose:'Где разместить?',pKind:'Тип',pCat:'Категория',pTitleF:'Заголовок',pTitlePh:'Например: детская коляска, почти новая',
@@ -33,15 +33,15 @@ A.addDict({
  mRenewed:'Продлено до',mBadLink:'Ссылка недействительна или объявление удалено',mManage:'Управление объявлением',
  pSavedMy:'Ссылка также сохранена в «Мои объявления» на этом телефоне.',pOpenMy:'🗂 Мои объявления',mExpired:'Срок показа истёк — нажмите «Продлить»',
  mGone:'Ссылка недействительна или объявление удалено',mForget:'Убрать из списка',mMyNote:'Список хранится только на этом телефоне. Чтобы управлять объявлением с другого телефона, откройте свою секретную ссылку.',mOnlyYou:'Изменять, закрывать и удалять объявление можете только вы — по этой ссылке.',
- menuTitle:'Все разделы',menuMasters:'Мастера и услуги',menuMastersD:'Каталог специалистов района',menuAlerts:'Важно',menuAlertsD:'Отключения, ремонт, перекрытия',menuNews:'Новости района',menuNewsD:'Что происходит в Мугалжарском районе',
+ menuTitle:'Все разделы',menuMasters:'Мастера и услуги',menuMastersD:'Каталог специалистов района',menuAlerts:'Важные сообщения',menuAlertsD:'Отключения, ремонт, перекрытия',menuNews:'Новости района',menuNewsD:'Что происходит в Мугалжарском районе',
  menuAddBiz:'Добавить мастера или бизнес',menuLang:'Язык',homeSections:'Разделы',lFound:'Объявления жителей',
  lErr:{bad_token:'Ссылка недействительна',invalid_phone:'Проверьте номер телефона',bad_price:'Проверьте цену',bad_title:'Слишком короткий заголовок',bad_kind:'Выберите тип и категорию',too_many_photos:'Не больше 5 фото',locked:'Объявление отклонено модератором'}
 },{
- navBazar:'Барахолка',navPost:'Жариялау',navMenu:'Мәзір',waGreetL:'Сәлеметсіз бе! Сіздің «{t}» хабарландыруыңызды example.kz сайтынан таптым: {u}',
- lSec:{market:'Барахолка',ads:'Хабарландырулар',jobs:'Жұмыс',lost:'Жоғалғандар'},
- lSecD:{market:'Сатамын, сатып аламын, тегін беремін',ads:'Жалға беру, қосымша жұмыс, қызмет, жолсерік',jobs:'Бос орындар мен көршілердің түйіндемелері',lost:'Жоғалттым немесе таптым'},
- lKind:{sell:'Сатамын',buy:'Сатып аламын',free:'Тегін беремін',rent_offer:'Жалға беремін',rent_seek:'Жалға аламын',job_offer:'Бос жұмыс орны',job_seek:'Жұмыс іздеймін',gig:'Қосымша жұмыс',service:'Жеке қызметтер',ride:'Жолсеріктер',other:'Әртүрлі',lost:'Жоғалттым',found:'Таптым'},
- lCat:{jobs:{other:''},market:{kids:'Балаларға',clothes:'Киім',tech:'Техника',furniture:'Жиһаз',home:'Үй мен саяжайға',auto:'Көлік және бөлшектер',animals:'Жануарлар мен мал',build:'Құрылыс материалдары',other:'Басқа'},
+ navBazar:'Жарнама',navPost:'Жариялау',navMenu:'Мәзір',waGreetL:'Сәлеметсіз бе! Сіздің «{t}» хабарландыруыңызды example.kz сайтынан таптым: {u}',
+ lSec:{market:'Жарнама',ads:'Қызмет көрсету',jobs:'Жұмыс',lost:'Іздеймін'},
+ lSecD:{market:'Сатамын/сатып аламын, жалға беремін/жалға аламын, тегін беремін',ads:'Қызмет іздеймін / ұсынамын',jobs:'Қызметкер іздеймін / жұмыс іздеймін',lost:'Жоғалды / табылды'},
+ lKind:{sell:'Сатамын',buy:'Сатып аламын',free:'Тегін беремін',rent_offer:'Жалға беремін',rent_seek:'Жалға аламын',job_offer:'Бос жұмыс орны',job_seek:'Жұмыс іздеймін',gig:'Қосымша жұмыс',service:'Ұсынамын',ride:'Жолсеріктер',other:'Іздеймін',lost:'Жоғалды',found:'Табылды'},
+ lCat:{jobs:{other:''},market:{kids:'Балаларға',clothes:'Киім',tech:'Техника',furniture:'Жиһаз',home:'Үй мен саяжайға',auto:'Көлік және бөлшектер',animals:'Жануарлар мен мал',build:'Құрылыс материалдары',other:'Басқа',house:'Үй',flat:'Пәтер',room:'Бөлме',garage:'Гараж',equipment:'Техника (жалға)'},
   ads:{house:'Үй',flat:'Пәтер',room:'Бөлме',garage:'Гараж',equipment:'Техника',other:'Басқа'},
   lost:{animals:'Жануарлар',docs:'Құжаттар',keys:'Кілттер',things:'Заттар',other:'Басқа'}},
  lPrice:{free:'Тегін',negotiable:'Келісімді',none:''},lAll:'Барлығы',lAllCats:'Барлық санат',
@@ -63,18 +63,20 @@ A.addDict({
  mRenewed:'Ұзартылды:',mBadLink:'Сілтеме жарамсыз немесе хабарландыру жойылған',mManage:'Хабарландыруды басқару',
  pSavedMy:'Сілтеме осы телефондағы «Менің хабарландыруларым» бөлімінде де сақталды.',pOpenMy:'🗂 Менің хабарландыруларым',mExpired:'Көрсету мерзімі бітті — «Ұзарту» басыңыз',
  mGone:'Сілтеме жарамсыз немесе хабарландыру жойылған',mForget:'Тізімнен алып тастау',mMyNote:'Тізім тек осы телефонда сақталады. Хабарландыруды басқа телефоннан басқару үшін құпия сілтемеңізді ашыңыз.',mOnlyYou:'Хабарландыруды осы сілтеме арқылы тек сіз өзгерте, жаба және жоя аласыз.',
- menuTitle:'Барлық бөлімдер',menuMasters:'Шеберлер мен қызметтер',menuMastersD:'Аудан мамандарының каталогы',menuAlerts:'Маңызды',menuAlertsD:'Өшірулер, жөндеу, жол жабылуы',menuNews:'Аудан жаңалықтары',menuNewsD:'Мұғалжар ауданында не болып жатыр',
+ menuTitle:'Барлық бөлімдер',menuMasters:'Шеберлер мен қызметтер',menuMastersD:'Аудан мамандарының каталогы',menuAlerts:'Маңызды хабарламалар',menuAlertsD:'Өшірулер, жөндеу, жол жабылуы',menuNews:'Аудан жаңалықтары',menuNewsD:'Мұғалжар ауданында не болып жатыр',
  menuAddBiz:'Шебер немесе бизнес қосу',menuLang:'Тіл',homeSections:'Бөлімдер',lFound:'Тұрғындардың хабарландырулары',
  lErr:{bad_token:'Сілтеме жарамсыз',invalid_phone:'Телефон нөмірін тексеріңіз',bad_price:'Бағаны тексеріңіз',bad_title:'Тақырып тым қысқа',bad_kind:'Түрі мен санатын таңдаңыз',too_many_photos:'5 фотодан артық емес',locked:'Хабарландыруды модератор қабылдамады'}
 });
-const SECT={market:{e:'🛍',kinds:['sell','buy','free'],cats:['kids','clothes','tech','furniture','home','auto','animals','build','other']},
- ads:{e:'📋',kinds:['rent_offer','rent_seek','gig','service','ride','other'],cats:['house','flat','room','garage','equipment','other']},
+const SECT={market:{e:'🛍',kinds:['sell','buy','rent_offer','rent_seek','free'],cats:['kids','clothes','tech','furniture','home','auto','animals','build','house','flat','room','garage','other']},
+ ads:{e:'🛠',kinds:['other','service'],cats:['other']},
  jobs:{e:'💼',kinds:['job_offer','job_seek'],cats:['other'],db:'ads'},
- lost:{e:'🐾',kinds:['lost','found'],cats:['animals','docs','keys','things','other']}};
+ lost:{e:'🔎',kinds:['lost','found'],cats:['animals','docs','keys','things','other']}};
 const ROUTE={market:'bazar',ads:'ads',jobs:'jobs',lost:'lost'}, BYROUTE={bazar:'market',ads:'ads',jobs:'jobs',lost:'lost'};
 // [jobs] «Работа» — витрина: в базе это section='ads' с kind job_offer/job_seek
 const JOB=k=>k==='job_offer'||k==='job_seek';
-const secOf=l=>l&&l.section==='ads'&&JOB(l.kind)?'jobs':(l&&l.section);
+const RENTK=k=>k==='rent_offer'||k==='rent_seek';
+// [izde] «Жарнама» = market + аренда (в базе section='ads', kind rent_*); «Қызмет көрсету» = остальное из ads
+const secOf=l=>l&&l.section==='ads'&&JOB(l.kind)?'jobs':(l&&l.section==='ads'&&RENTK(l.kind)?'market':(l&&l.section));
 const RENT=k=>k==='rent_offer'||k==='rent_seek';
 const COLS='id,section,kind,category,title,body,price,price_mode,place,event_date,phone,has_wa,photos,status,closed_at,views,highlighted,published_at,sort_at,expires_at,created_at';
 let LST=[]; const MYK='site_my_listings';
@@ -198,7 +200,8 @@ function form(sec,row,onSubmit){
   if(sec==='lost')pm='none';if(k==='free')pm='free';
   let body=$('#lb').value.trim();
   if(JN&&k==='job_seek'){const nm=$('#jn').value.trim(),ex=$('#je').value.trim();body=[nm?t('jNameL')+': '+nm:'',ex?t('jExpL')+': '+ex:'',body].filter(Boolean).join('\n')}
-  const p={section:S.db||sec,kind:k,category:(S.db||(sec==='ads'&&!RENT(k)))?'other':$('#lc').value,title:$('#lt').value.trim(),body,price_mode:pm,price:pm==='fixed'?$('#lp').value:'',
+  const RC=['house','flat','room','garage','equipment','other'],MC=SECT.market.cats;let cv=$('#lc')?$('#lc').value:'other';if(RENT(k)){if(cv==='tech')cv='equipment';if(!RC.includes(cv))cv='other'}else if(sec==='market'&&!MC.includes(cv))cv='other';
+  const p={section:RENT(k)?'ads':(S.db||sec),kind:k,category:(S.db||sec==='ads')?'other':cv,title:$('#lt').value.trim(),body,price_mode:pm,price:pm==='fixed'?$('#lp').value:'',
    place:$('#lpl').value.trim(),event_date:sec==='lost'?$('#ld').value:'',phone:$('#lph').value,has_wa:$('#lwa').checked,lang:A.lang()};
   if(p.title.length<3){A.toast(t('pErrTitle'));$('#lt').focus();return}
   const d=p.phone.replace(/\D/g,'');if(!/^(8|7)?7\d{9}$/.test(d)){A.toast(t('pErrPhone'));$('#lph').focus();return}
@@ -302,7 +305,7 @@ function viewMenu(){A.setMeta(t('menuTitle')+' — izde.kz','');
 function homeStrip(){if(!ON)return '';const l=visible().filter(x=>x.status==='approved').slice(0,12);
  return `<section class="ann-block lfresh"><div class="ann-h"><h2>🗂 ${t('lFresh')}</h2><a href="#/bazar">${t('lFreshAll')}</a></div>
  ${l.length?`<div class="lcards lhome">${l.map(x=>lcard(x,true)).join('')}</div>`:`<a class="ann-empty lnk-empty" href="#/post"><span>${t('lFreshEmpty')}</span><b>${t('lPostBtn')}</b></a>`}</section>`}
-function homeTiles(){if(!ON)return '';const it=[['#/bazar','🛍',t('lSec').market],['#/jobs','💼',t('lSec').jobs],['#/ads','📋',t('lSec').ads],['#/lost','🐾',t('lSec').lost],['#/news','📰',t('navNews')],['#/ann','⚠️',t('menuAlerts')],['#/post','➕',t('navPost')]];
+function homeTiles(){if(!ON)return '';const it=[['#/ann','📢',A.lang()==='kz'?'Хабарландыру':'Объявления'],['#/bazar','🛍',t('lSec').market],['#/ads','🛠',t('lSec').ads],['#/news','📰',t('navNews')],['#/jobs','💼',t('lSec').jobs],['#/lost','🔎',t('lSec').lost]];
  return `<div class="stiles">${it.map(([h,e,n])=>`<a class="stile${h==='#/post'?' spost':''}" href="${h}"><span>${e}</span><b>${esc(n)}</b></a>`).join('')}</div>`}
 function searchHtml(q){if(!ON)return {n:0,html:''};const qs=A.norm(q).split(' ').filter(w=>w.length>=3);if(!qs.length)return {n:0,html:''};
  const hits=visible().filter(l=>{const tk=A.norm([l.title,l.body,l.place,T_KIND(l),catLabel(l),t('lSec')[secOf(l)],secOf(l)==='jobs'?(window.SITE_JOB_SYN||''):''].join(' ')).split(' ').filter(Boolean);return qs.every(x=>A.tokScore(x,tk)>0)});
