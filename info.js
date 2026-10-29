@@ -1,4 +1,4 @@
-// BariBar Кандыагаш — «📞 Полезные телефоны / Пайдалы телефондар» (таблица phones, 21_growth.sql): экстренные службы, аварийные,
+// izde.kz — «📞 Полезные телефоны / Пайдалы телефондар» (таблица phones, 21_growth.sql): экстренные службы, аварийные,
 // ОСИ/КСК, участковый, акимат, ЦОН, поликлиника, школа, детсады. Список ведут админ и модератор в админке.
 // Подключается после app.js (использует window.SITE_APP).
 (function(){
@@ -7,14 +7,14 @@ const A=window.SITE_APP;if(!A)return;
 const {esc,SB}=A;const t=k=>A.t(k);
 const GR=[['activist','⭐'],['emergency','🚨'],['utility','🔧'],['police','👮'],['akimat','🏛'],['osi','🏘'],['con','📄'],['clinic','🏥'],['school','🏫'],['kindergarten','🧸'],['other','📌']];
 A.addDict({
- phTitle:'Полезные телефоны',phShort:'Телефоны',phMenuD:'Экстренные службы, аварийные, участковый, акимат',phHome:'112 · 101 · 103 · 104',
+ phTitle:'Полезные телефоны',phShort:'Телефоны',phMenuD:'Экстренные службы, аварийные, участковый, акимат',phHome:'Газ 104 · коммунальщики · акимат',
  phIntro:'Нажмите на номер, чтобы позвонить. Номера взяты с официальных сайтов служб или проверены администрацией сайта.',
  phGr:{activist:'Активист района',emergency:'Экстренные службы',utility:'Коммунальные и аварийные службы',police:'Участковый',akimat:'Акимат',osi:'ОСИ / КСК',con:'ЦОН и госуслуги',clinic:'Поликлиника',school:'Школа',kindergarten:'Детские сады',other:'Другое'},
  phEmpty:'Список телефонов скоро появится',phCall:'Позвонить',phAlso:'Ещё',phFound:'Полезные телефоны',phWaAct:n=>`Здравствуйте, ${n}! Ваш номер взял на сайте example.kz`,phWaGreet:'Здравствуйте! Нашёл ваш номер на сайте  в разделе «Полезные телефоны».',
  menuAlerts:'Отключения',menuAlertsD:'Свет, вода, газ, ремонт — где и когда',annTitle:'Отключения и важное',annDoneH:'Завершённые',navAnn:'Отключения',annFound:'Отключения и важное',annEmpty:'Сейчас отключений и важных объявлений нет',liveRepNote:'Сообщение уйдёт на проверку и после подтверждения появится в разделе «Отключения и важное».',
  outT:'Отключения',outNow:'сейчас',outSoon:'скоро',outNone:'Сейчас нет',outN:n=>`Сейчас: ${n}`,outSoonN:n=>`Скоро: ${n}`,outAll:'Все →',outHead:'Отключения и работы'
 },{
- phTitle:'Пайдалы телефондар',phShort:'Телефондар',phMenuD:'Шұғыл қызметтер, апаттық қызметтер, учаскелік, әкімдік',phHome:'112 · 101 · 103 · 104',
+ phTitle:'Пайдалы телефондар',phShort:'Телефондар',phMenuD:'Шұғыл қызметтер, апаттық қызметтер, учаскелік, әкімдік',phHome:'Газ 104 · коммуналшы · әкімдік',
  phIntro:'Қоңырау шалу үшін нөмірді басыңыз. Нөмірлер қызметтердің ресми сайттарынан алынған немесе сайт әкімшілігі тексерген.',
  phGr:{activist:'Аудан белсендісі',emergency:'Шұғыл қызметтер',utility:'Коммуналдық және апаттық қызметтер',police:'Учаскелік инспектор',akimat:'Әкімдік',osi:'ПИК / ТҮБ',con:'ХҚКО және мемлекеттік қызметтер',clinic:'Емхана',school:'Мектеп',kindergarten:'Балабақшалар',other:'Басқа'},
  phEmpty:'Телефондар тізімі жақында шығады',phCall:'Қоңырау шалу',phAlso:'Тағы',phFound:'Пайдалы телефондар',phWaAct:n=>`Сәлеметсіз бе, ${n}! Нөміріңізді example.kz сайтынан алдым`,phWaGreet:'Сәлеметсіз бе! Нөміріңізді  сайтындағы «Пайдалы телефондар» бөлімінен таптым.',
@@ -24,13 +24,14 @@ A.addDict({
 const COLS='id,grp,title_ru,title_kz,note_ru,note_kz,phone,phone2,wa,sort_order';
 let PH=[],LOADED=false;
 // photo_url (25_phone_photos.sql): если колонки ещё нет, сервер ответит ошибкой — тогда грузим список без фото
+const ST=(window.SITE_CONFIG&&SITE_CONFIG.phones)||[];if(ST.length)PH=ST.slice();
 async function load(){if(!SB.enabled)return;const q=c=>SB.get(`phones?select=${c}&order=sort_order.asc,id.asc`,8000);
- try{let r;try{r=await q(COLS+',photo_url')}catch(e){r=await q(COLS)}PH=Array.isArray(r)?r:[];LOADED=true}catch(e){PH=[]}}
+ try{let r;try{r=await q(COLS+',photo_url')}catch(e){r=await q(COLS)}PH=Array.isArray(r)&&r.length?r:ST.slice();LOADED=true}catch(e){PH=ST.slice()}}
 // фото: путь в бакете listings (admin/police/…jpg) или полный https-адрес
 const phUrl=r=>{const p=String(r.photo_url||'').trim();if(!p)return '';if(/^https:\/\//.test(p))return p;return SB.publicUrl?SB.publicUrl('listings',p.replace(/^\/+/,'')):''};
 const L=(r,k)=>A.lang()==='kz'?(r[k+'_kz']||r[k+'_ru']):(r[k+'_ru']||r[k+'_kz']);
 // 112 → «112»; 87172620438 → «8 7172 62 04 38»; 87012681101 → «8 701 268 11 01»; 88000807777 → «8 800 080 77 77»
-const fmt=p=>{p=String(p||'');if(p.length!==11)return p;if(/^87172/.test(p))return `8 7172 ${p.slice(5,7)} ${p.slice(7,9)} ${p.slice(9)}`;return `8 ${p.slice(1,4)} ${p.slice(4,7)} ${p.slice(7,9)} ${p.slice(9)}`};
+const fmt=p=>{p=String(p||'');if(p.length!==11)return p;if(/^871333/.test(p))return `8 (71333) ${p.slice(6,7)}-${p.slice(7,9)}-${p.slice(9)}`;if(/^87172/.test(p))return `8 7172 ${p.slice(5,7)} ${p.slice(7,9)} ${p.slice(9)}`;return `8 ${p.slice(1,4)} ${p.slice(4,7)} ${p.slice(7,9)} ${p.slice(9)}`};
 const tel=p=>{p=String(p||'');return p.length===11&&p[0]==='8'&&!/^8800/.test(p)?'+7'+p.slice(1):p};
 // activist: personal greeting by first name + patronymic (first two words of title_ru)
 const actName=r=>String(r.title_ru||'').split(/\s+[—–-]\s+/)[0].trim().split(/\s+/).slice(0,2).join(' ');
@@ -39,11 +40,13 @@ function row(r){const wa=/^7\d{10}$/.test(r.wa||'')?r.wa:'';const note=L(r,'note
  return `<article class="phr${pu?' phr-wp':''}" id="ph${r.id}"><div class="phr-b">${pu?`<img class="phr-ph" src="${esc(pu)}" alt="${esc(L(r,'title'))}" width="64" height="64" loading="lazy" decoding="async" onerror="this.remove()">`:''}<b class="phr-t">${esc(L(r,'title'))}</b>${note?`<small class="phr-n">${esc(note)}</small>`:''}
   <a class="phr-num" href="tel:${esc(tel(r.phone))}" aria-label="${esc(t('phCall'))}: ${esc(fmt(r.phone))}">${esc(fmt(r.phone))}</a>${r.phone2?`<a class="phr-num2" href="tel:${esc(tel(r.phone2))}">${esc(t('phAlso'))}: ${esc(fmt(r.phone2))}</a>`:''}</div>
   <div class="phr-a"><a class="btn call" href="tel:${esc(tel(r.phone))}" aria-label="${esc(t('phCall'))}: ${esc(fmt(r.phone))}">📞 <span>${esc(t('phCall'))}</span></a>${wa?`<a class="btn wa" href="${esc(waHref(r))}" target="_blank" rel="noopener" aria-label="WhatsApp: ${esc(L(r,'title'))}">${A.WA_SVG}<span>WhatsApp</span></a>`:''}</div></article>`}
+function teamHtml(){const T=(window.SITE_CONFIG&&SITE_CONFIG.team)||[];if(!T.length)return '';const kz=A.lang()==='kz';
+ return `<section class="phg"><h2>🌐 ${kz?'Сайт командасы':'Команда сайта'}</h2>${T.map(m=>`<article class="phr"><div class="phr-b"><b class="phr-t">${esc(m.name)}</b><small class="phr-n">${esc(kz?m.role_kz:m.role_ru)} · ${esc(m.email)}</small><a class="phr-num" href="tel:${esc(tel(m.phone))}">${esc(fmt(m.phone))}</a></div><div class="phr-a">${m.wa?`<a class="btn wa" href="https://wa.me/${esc(m.wa)}" target="_blank" rel="noopener">${A.WA_SVG}<span>WhatsApp</span></a>`:''}</div></article>`).join('')}</section>`}
 function view(){
- A.setMeta(t('phTitle')+' — BariBar Кандыагаш',t('phMenuD'));
+ A.setMeta(t('phTitle')+' — izde.kz',t('phMenuD'));
  const groups=GR.map(([g,e])=>[g,e,PH.filter(r=>r.grp===g)]).filter(x=>x[2].length);
  A.app.innerHTML=`<div class="crumbs"><button class="back" onclick="location.hash='#/'" aria-label="${t('back')}">←</button><h1>📞 ${esc(t('phTitle'))}</h1></div>
- <p class="ph-intro">${esc(t('phIntro'))}</p>
+ <p class="ph-intro">${esc(t('phIntro'))}</p>${teamHtml()}
  <section class="phg"><h2>💬 ${A.lang()==='kz'?'Аудан чаттары':'Чаты района'}</h2><div class="phr otdam-r"><div><b>${A.lang()==='kz'?'«Тегін беремін» WhatsApp чаты':'Чат «Отдам даром» в WhatsApp'}</b><small>${A.lang()==='kz'?'Қажет емес заттарды тегін беру және алу':'Отдать или забрать ненужные вещи бесплатно'}</small></div><a class="btn wa sm" href="https://chat.whatsapp.com/BSOe0MEwoTJ75EB0HHgIPn" target="_blank" rel="noopener">${A.WA_SVG}<span>${A.lang()==='kz'?'Чатқа кіру':'Вступить'}</span></a></div></section>
  ${groups.length?groups.map(([g,e,l])=>`<section class="phg"><h2>${e} ${esc(t('phGr')[g])}</h2>${l.map(row).join('')}${g==='activist'&&window.SITE_AP?SITE_AP.link():''}</section>`).join('')
    :`<div class="ann-empty">${SB.enabled&&!LOADED&&!A.isOffline()?`⏳ <b>${t('loading')}</b>`:`📞 <b>${esc(t('phEmpty'))}</b>`}</div>`}`;

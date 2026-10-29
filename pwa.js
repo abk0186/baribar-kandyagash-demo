@@ -1,18 +1,18 @@
-// «Добавить BariBar Кандыагаш на экран телефона»: service worker, кнопка установки (Android/Chrome), инструкция для iPhone, подсказка для WhatsApp/Instagram.
+// «Добавить izde.kz на экран телефона»: service worker, кнопка установки (Android/Chrome), инструкция для iPhone, подсказка для WhatsApp/Instagram.
 (function(){
 'use strict';
 const A=window.SITE_APP; if(!A)return;
 const t=k=>A.t(k), esc=A.esc;
-A.addDict({pwaT:'📲 Добавить BariBar Кандыагаш на экран телефона',pwaS:'Открывается в один тап, как приложение',pwaBtn:'Добавить',pwaMenu:'Добавить на экран телефона',pwaClose:'Скрыть',
+A.addDict({pwaT:'📲 Добавить izde.kz на экран телефона',pwaS:'Открывается в один тап, как приложение',pwaBtn:'Добавить',pwaMenu:'Добавить на экран телефона',pwaClose:'Скрыть',
  pwaIosT:'Как добавить на iPhone',pwaIos1:'Нажмите кнопку «Поделиться» внизу экрана',pwaIos2:'Выберите «На экран „Домой“» и нажмите «Добавить»',
  pwaAndT:'Как добавить на Android',pwaAnd1:'Нажмите меню ⋮ в правом верхнем углу',pwaAnd2:'Выберите «Добавить на главный экран» или «Установить приложение»',
  pwaInappT:'Сначала откройте сайт в браузере',pwaInapp1:'Нажмите ⋮ или ••• в углу экрана',pwaInapp2:'Выберите «Открыть в браузере» (Chrome или Safari)',pwaInapp3:'Там нажмите «Добавить на экран телефона»',
- pwaDone:'BariBar Кандыагаш уже на экране телефона 👍',pwaOk:'Понятно',pwaPage:'Добавить на экран телефона',pwaPageS:'Иконка BariBar Кандыагаш появится рядом с другими приложениями — сайт будет открываться в один тап.',pwaInstall:'📲 Установить'},
-{pwaT:'📲 Телефон экранына қосу',pwaS:'BariBar Қандыағаш қосымша сияқты бір рет басып ашылады',pwaBtn:'Қосу',pwaMenu:'Телефон экранына қосу',pwaClose:'Жасыру',
+ pwaDone:'izde.kz уже на экране телефона 👍',pwaOk:'Понятно',pwaPage:'Добавить на экран телефона',pwaPageS:'Иконка izde.kz появится рядом с другими приложениями — сайт будет открываться в один тап.',pwaInstall:'📲 Установить'},
+{pwaT:'📲 Телефон экранына қосу',pwaS:'izde.kz қосымша сияқты бір рет басып ашылады',pwaBtn:'Қосу',pwaMenu:'Телефон экранына қосу',pwaClose:'Жасыру',
  pwaIosT:'iPhone-ға қалай қосуға болады',pwaIos1:'Экранның төменгі жағындағы «Бөлісу» батырмасын басыңыз',pwaIos2:'«Басты экранға» тармағын таңдап, «Қосу» басыңыз',
  pwaAndT:'Android-қа қалай қосуға болады',pwaAnd1:'Жоғарғы оң жақтағы ⋮ мәзірін басыңыз',pwaAnd2:'«Басты экранға қосу» немесе «Қолданбаны орнату» тармағын таңдаңыз',
  pwaInappT:'Алдымен сайтты браузерде ашыңыз',pwaInapp1:'Экран бұрышындағы ⋮ немесе ••• басыңыз',pwaInapp2:'«Браузерде ашу» тармағын таңдаңыз (Chrome немесе Safari)',pwaInapp3:'Сонда «Телефон экранына қосу» басыңыз',
- pwaDone:'BariBar Қандыағаш телефон экранында тұр 👍',pwaOk:'Түсінікті',pwaPage:'Телефон экранына қосу',pwaPageS:'BariBar Қандыағаш белгішесі басқа қолданбалардың қасында пайда болады — сайт бір рет басып ашылады.',pwaInstall:'📲 Орнату'});
+ pwaDone:'izde.kz телефон экранында тұр 👍',pwaOk:'Түсінікті',pwaPage:'Телефон экранына қосу',pwaPageS:'izde.kz белгішесі басқа қолданбалардың қасында пайда болады — сайт бір рет басып ашылады.',pwaInstall:'📲 Орнату'});
 const UA=navigator.userAgent||'';
 const IOS=/iPhone|iPad|iPod/i.test(UA)||(/Macintosh/.test(UA)&&navigator.maxTouchPoints>1);
 const INAPP=/WhatsApp|Instagram|FBAN|FBAV|FB_IAB|FBIOS|Line\//i.test(UA);
@@ -50,7 +50,7 @@ async function go(){
  if(IOS){track('ios');modal('ios');return}
  track('guide');modal('and');
 }
-function view(){A.setMeta(t('pwaPage')+' — BariBar Кандыагаш','');
+function view(){A.setMeta(t('pwaPage')+' — izde.kz','');
  const kind=INAPP?'inapp':(IOS?'ios':'and');
  A.app.innerHTML=`<div class="crumbs"><button class="back" onclick="location.hash='#/menu'" aria-label="${t('back')}">←</button><h1>📲 ${t('pwaPage')}</h1></div>
  <div id="pwapage" class="pwa-page"><img src="/baribar-kandyagash-demo/icon-192.png" width="72" height="72" alt="" class="pwa-icon"><p>${t('pwaPageS')}</p>

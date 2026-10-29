@@ -99,7 +99,7 @@ function viewList(sec){
  if(sec==='jobs')return viewJobs();
  const S=SECT[sec];const showCats=sec!=='ads'||RENT(F.kind);
  const list=visible().filter(l=>secOf(l)===sec&&(!F.kind||l.kind===F.kind)&&(!F.cat||l.category===F.cat));
- A.setMeta(t('lSec')[sec]+' — BariBar Кандыагаш',t('lSecD')[sec]);
+ A.setMeta(t('lSec')[sec]+' — izde.kz',t('lSecD')[sec]);
  A.app.innerHTML=`<div class="crumbs"><button class="back" onclick="location.hash='#/'" aria-label="${t('back')}">←</button><h1>${S.e} ${t('lSec')[sec]}</h1></div>
  ${sec==='market'?`<a class="btn wa otdam" href="https://chat.whatsapp.com/BSOe0MEwoTJ75EB0HHgIPn" target="_blank" rel="noopener">${A.lang()==='kz'?'💬 «Тегін беремін» WhatsApp чаты':'💬 Чат «Отдам даром» в WhatsApp'}</a>`:''}
  <div class="chips">${['',...S.kinds].map(k=>`<button class="${F.kind===k?'on':''}" data-lk="${k}">${k?esc(t('lKind')[k]):t('lAll')}</button>`).join('')}</div>
@@ -112,7 +112,7 @@ function viewList(sec){
 let JT='job_offer';
 function viewJobs(){const S=SECT.jobs;const q=(location.hash.split('?')[1]||'');if(/k=job_seek/.test(q))JT='job_seek';else if(/k=job_offer/.test(q))JT='job_offer';
  const list=visible().filter(l=>l.section==='ads'&&l.kind===JT);const n=k=>visible().filter(l=>l.section==='ads'&&l.kind===k).length;
- A.setMeta(t('lSec').jobs+' — BariBar Кандыагаш',t('lSecD').jobs);
+ A.setMeta(t('lSec').jobs+' — izde.kz',t('lSecD').jobs);
  A.app.innerHTML=`<div class="crumbs"><button class="back" onclick="location.hash='#/'" aria-label="${t('back')}">←</button><h1>${S.e} ${t('lSec').jobs}</h1></div>
  <div class="jtabs" role="tablist">${S.kinds.map(k=>`<button role="tab" aria-selected="${JT===k}" class="${JT===k?'on':''}" data-jt="${k}">${esc(t('jTab')[k])}<i>${n(k)}</i></button>`).join('')}</div>
  <p class="meta jtd">${esc(t('jTabD')[JT])}</p>
@@ -129,7 +129,7 @@ async function viewItem(id){
  if(!l){A.app.innerHTML=`<div class="crumbs"><button class="back" onclick="history.length>1?history.back():location.hash='#/'">←</button><h1>🗂</h1></div><div class="empty"><h2>${t('lNotFound')}</h2><a class="btn primary" href="#/bazar">${t('lSec').market}</a></div>`;return}
  const ES=secOf(l),S=SECT[ES];const photos=(l.photos||[]).map(photoUrl).filter(Boolean);const pr=fmtPrice(l);const closed=l.status==='closed';
  const link='/baribar-kandyagash-demo/i/'+l.id+'/';  // [siteT] страница с превью для WhatsApp
- A.setMeta(l.title+' — '+t('lSec')[ES]+' · BariBar Кандыагаш',(l.body||'').slice(0,150));
+ A.setMeta(l.title+' — '+t('lSec')[ES]+' · izde.kz',(l.body||'').slice(0,150));
  A.app.innerHTML=`<div class="crumbs"><button class="back" onclick="location.hash='#/${ROUTE[ES]}${ES==='jobs'?'?k='+l.kind:''}'" aria-label="${t('back')}">←</button><h1 class="sm">${S.e} ${t('lSec')[ES]}</h1></div>
  <article class="article litem">
   ${photos.length?`<div class="gallery" id="gal">${photos.map((u,i)=>SITE_PIC(u,true,`loading="${i?'lazy':'eager'}"`,esc)).join('')}</div>${photos.length>1?`<div class="gal-n"><span id="galn">1</span> / ${photos.length}</div>`:''}`:''}
@@ -206,11 +206,11 @@ function form(sec,row,onSubmit){
   onSubmit(p,photos,f.querySelector('[type=submit]'))};
 }
 function viewPost(sec){
- if(!SECT[sec]){A.setMeta(t('pTitle')+' — BariBar Кандыагаш','');
+ if(!SECT[sec]){A.setMeta(t('pTitle')+' — izde.kz','');
   A.app.innerHTML=`<div class="crumbs"><button class="back" onclick="location.hash='#/'" aria-label="${t('back')}">←</button><h1>➕ ${t('pTitle')}</h1></div><h2>${t('pChoose')}</h2>
   <div class="mtiles">${Object.keys(SECT).map(s=>`<a class="mtile" href="#/post/${s}"><span>${SECT[s].e}</span><b>${t('lSec')[s]}</b><small>${t('lSecD')[s]}</small></a>`).join('')}
   <a class="mtile" href="#/add"><span>🧰</span><b>${t('menuAddBiz')}</b><small>${t('menuMastersD')}</small></a></div>`;return}
- A.setMeta(t('pTitle')+' · '+t('lSec')[sec]+' — BariBar Кандыагаш','');
+ A.setMeta(t('pTitle')+' · '+t('lSec')[sec]+' — izde.kz','');
  form(sec,null,async(p,photos,btn)=>{
   if(A.isOffline()){A.toast(t('offlineForm'));return}
   if(!A.isLive()){A.toast(t('pNoteDemo'));return}
@@ -240,7 +240,7 @@ function done(r,p,sec){const link=secretLink(r.id,r.token);
 }
 async function viewManage(id,tok){
  if(!tok){const m=my().find(x=>String(x.id)===String(id));tok=m&&m.token}
- A.setMeta(t('mManage')+' — BariBar Кандыагаш','');
+ A.setMeta(t('mManage')+' — izde.kz','');
  A.app.innerHTML=`<div class="crumbs"><button class="back" onclick="location.hash='#/'" aria-label="${t('back')}">←</button><h1 class="sm">🔑 ${t('mManage')}</h1></div><p class="meta">…</p>`;
  if(!A.isLive()&&!SB.enabled){A.app.querySelector('.meta').textContent=t('pNoteDemo');return}
  let r;try{if(!tok)throw 0;r=await SB.rpc('listing_get_own',{p_id:+id,p_token:tok},10000)}catch(e){A.app.innerHTML+=`<div class="empty"><h2>${t('mBadLink')}</h2><p class="meta">${t('mNoTok')}</p></div>`;A.app.querySelector('.meta').remove();return}
@@ -279,7 +279,7 @@ async function viewManage(id,tok){
      await load();A.toast(st==='pending'?t('mSavedPending'):t('mSaved'));viewManage(id,tok)}catch(e){if(e!=='bad_phone')A.toast(lerr(e))}})});
   }catch(e){if(e!=='bad_phone')A.toast(lerr(e))}};
 }
-function viewMy(){A.setMeta(t('pMy')+' — BariBar Кандыагаш','');const a=my();
+function viewMy(){A.setMeta(t('pMy')+' — izde.kz','');const a=my();
  A.app.innerHTML=`<div class="crumbs"><button class="back" onclick="location.hash='#/menu'" aria-label="${t('back')}">←</button><h1>🗂 ${t('pMy')}</h1></div>
  ${a.length?`<div class="mlist">${a.map(x=>`<a class="mrow" data-my="${x.id}" href="#/my/${x.id}"><span>${(SECT[secOf(x)]||{}).e||'🗂'}</span><b>${esc(x.title)}</b><small>${t('lSec')[secOf(x)]||''}<i class="myst" style="font-style:normal"></i></small></a>`).join('')}</div>`:`<div class="ann-empty"><span>${t('pMyEmpty')}</span></div>`}
  ${a.length?`<p class="meta">🔒 ${t('mMyNote')}</p>`:''}
@@ -293,7 +293,7 @@ function viewMy(){A.setMeta(t('pMy')+' — BariBar Кандыагаш','');const
    st.textContent=' · '+(exp?t('mExpired'):(s.status==='closed'?t('lClosed')[secOf(s)]:(t('mStatus')[s.status]||s.status)));
    const m=my().find(x=>x.id===s.id);if(m&&m.title!==s.title){ch=true;row.querySelector('b').textContent=s.title}});
   if(ch)saveMy(my().map(x=>{const r=res.find(y=>y.id===x.id&&!y.gone);return r?Object.assign(x,{title:r.title}):x}))}).catch(()=>{})}
-function viewMenu(){A.setMeta(t('menuTitle')+' — BariBar Кандыагаш','');
+function viewMenu(){A.setMeta(t('menuTitle')+' — izde.kz','');
  const items=[['#/',`🧰`,t('menuMasters'),t('menuMastersD')],...(window.SITE_PH?[['#/phones','📞',t('phTitle'),t('phMenuD')]]:[]),...(window.SITE_AP?[['#/appeal','📨',t('apMenu'),t('apMenuD')]]:[]),...(ON?Object.keys(SECT):[]).map(s=>[`#/${ROUTE[s]}`,SECT[s].e,t('lSec')[s],t('lSecD')[s]]),
   ['#/news','📰',t('menuNews'),t('menuNewsD')],['#/ann','⚠️',t('menuAlerts'),t('menuAlertsD')],...(ON?[['#/my','🔑',t('pMy'),'']]:[]),['#/add','➕',t('menuAddBiz'),''],['#/report','📣',t('repTitle'),''],['#/install','📲',t('pwaMenu')||'',''],['#/search','🔍',t('navSearch'),'']];
  A.app.innerHTML=`<div class="crumbs"><button class="back" onclick="location.hash='#/'" aria-label="${t('back')}">←</button><h1>☰ ${t('menuTitle')}</h1></div>

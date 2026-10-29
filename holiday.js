@@ -27,7 +27,7 @@ function pick(){let d=today(),prev=false;
 const esc=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
 function banner(lang){const h=pick();if(!h)return '';const K='site_hol_'+h.key;
  try{if(!h.prev&&sessionStorage.getItem(K))return ''}catch(e){}
- const txt=lang==='kz'?h.kz:h.ru,sig=lang==='kz'?'— BariBar Қандыағаш':'— BariBar Кандыагаш',cl=lang==='kz'?'Жабу':'Закрыть';
+ const txt=lang==='kz'?h.kz:h.ru,sig=lang==='kz'?'— izde.kz':'— izde.kz',cl=lang==='kz'?'Жабу':'Закрыть';
  return `<div class="hol" role="note" data-hol="${esc(K)}"><span class="hol-e">${h.e}</span><div class="hol-t"><b>${esc(txt)}</b><small>${sig}</small></div><button class="hol-x" aria-label="${cl}" title="${cl}" onclick="try{sessionStorage.setItem(this.parentNode.dataset.hol,'1')}catch(e){}this.parentNode.remove()">✕</button></div>`}
 window.SITE_HOL={banner,list:H};
 })();

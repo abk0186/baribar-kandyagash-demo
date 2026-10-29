@@ -1,4 +1,4 @@
-// BariBar Кандыагаш — «📨 Обращение активисту района» (#/appeal). Обращение НЕ публикуется на сайте:
+// izde.kz — «📨 Обращение активисту района» (#/appeal). Обращение НЕ публикуется на сайте:
 // попадает в админку «Сообщения» (reports, type='appeal', 24_resident_appeals.sql), оттуда — в WhatsApp активисту.
 // Имя и должность активиста — config.js → activist. Подключается после app.js (использует window.SITE_APP).
 (function(){
@@ -38,7 +38,7 @@ const PMAX=3;
 const normPhone=v=>{let d=String(v||'').replace(/\D/g,'');if(d.length===10&&d[0]==='7')d='8'+d;if(d.length===11&&d[0]==='7')d='8'+d.slice(1);return /^87\d{9}$/.test(d)?d:''};
 const link=()=>`<a class="ap-link" href="#/appeal"><span aria-hidden="true">📨</span><span><b>${esc(t('apLinkT'))}</b><small>${esc(t('apLinkS'))}</small></span></a>`;
 function view(){
- A.setMeta(t('apMenu')+' — BariBar Кандыагаш',t('apMenuD'));
+ A.setMeta(t('apMenu')+' — izde.kz',t('apMenuD'));
  A.app.innerHTML=`<div class="crumbs"><button class="back" onclick="history.length>1?history.back():location.hash='#/'" aria-label="${t('back')}">←</button><h1>📨 ${esc(t('apTitle'))}</h1></div>
  <div class="ap-who"><span class="ap-i" aria-hidden="true">🙋‍♀️</span><div><b>${esc(t('apWhoT'))}</b><p>${esc(t('apWho'))}</p><small>🔒 ${esc(t('apPriv'))}</small></div></div>
  <form id="apf" novalidate style="position:relative">${A.hp()}
