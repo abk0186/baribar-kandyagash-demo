@@ -709,8 +709,8 @@ async function loadBackend(){
    get('news?select=*&order=pinned.desc,publish_at.desc&limit=200',15000).catch(()=>null),
    SB.rpc('content_view_counts',{},10000).catch(()=>null)]);
   await Promise.all([window.SITE_L?SITE_L.load().catch(e=>console.warn('listings',e&&e.message)):null,window.SITE_PH?SITE_PH.load().catch(()=>{}):null]);  // [siteQ appeals] [siteT phones]
-  if(!Array.isArray(sp)||!sp.length)throw new Error('empty');
-  D.entries=sp.filter(r=>subById[r.sub_id]).map(mapSpec);
+  if(!Array.isArray(sp))throw new Error('bad response');
+  if(sp.length)D.entries=sp.filter(r=>subById[r.sub_id]).map(mapSpec);  // пустая база — оставляем встроенный список, но сервер на связи
   ANN=Array.isArray(an)?an.filter(r=>!r.is_demo).map(mapAnn):[];ADS=Array.isArray(ad)?ad:[];NEWS=Array.isArray(nw)?nw.filter(r=>!r.is_demo).map(mapNews):[];
   VIEWS={};if(Array.isArray(vc))vc.forEach(x=>{VIEWS[vKey(x.kind,x.item_id)]=+x.views||0});
   LIVE=true;OFFLINE=false;sortMode='rating';buildIndex();
