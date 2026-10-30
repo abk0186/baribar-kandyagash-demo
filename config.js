@@ -1,8 +1,8 @@
 // СГЕНЕРИРОВАНО build.py из site.config.json — правьте site.config.json, а не этот файл.
 // anon/publishable-ключ публичный по замыслу Supabase (защищают правила RLS). service_role-ключ сюда НЕЛЬЗЯ.
 window.SITE_CONFIG = {
-  supabaseUrl: '',
-  supabaseAnonKey: '',
+  supabaseUrl: 'https://ulwjbwpunioyznbafrwd.supabase.co',
+  supabaseAnonKey: 'sb_publishable_Z0-ad-mSqJuWaMnrlTe_BQ_IsYAp1Ij',
   metrikaId: '',
   metrikaWebvisor: false,
   adContactWa: '77078388346',
